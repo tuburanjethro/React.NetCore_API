@@ -3,25 +3,25 @@ import {
     Button, Modal, Header, Icon
 } from 'semantic-ui-react';
 
-export default class DeleteModal extends React.Component {
+export default class DeleteStore extends React.Component {
 
   constructor(props){
-    super(props);
-    this.state = {
-      modalOpen: false,
-      displayName: this.props.displayName
-    }
+      super(props);
+      this.state = {
+        modalOpen: false,
+  }
+
     this.handleClose = this.handleClose.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
-    this.deleteCustomer = this.deleteCustomer.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   handleOpen = () => this.setState({ modalOpen: true })
 
   handleClose = () => this.setState({ modalOpen: false })
 
-  deleteCustomer = () => {
-    this.props.deleteCustomer(this.props.customer);
+  delete = () => {
+    this.props.delete({Id: this.props.id, Name: this.state.name, Address: this.state.address});
     this.handleClose();
   }
 
@@ -32,9 +32,7 @@ export default class DeleteModal extends React.Component {
         open={this.state.modalOpen}
         onClose={this.handleClose}
       >
-        <Header>
-          Delete {this.state.displayName}
-        </Header>
+        <Header content="Delete Store" />
         <Modal.Content>
           Are you sure?
         </Modal.Content>
@@ -42,7 +40,7 @@ export default class DeleteModal extends React.Component {
           <Button secondary onClick={this.handleClose}>
             Cancel
           </Button>
-          <Button textAlign="right" color="red" onClick={this.deleteCustomer}>
+          <Button textAlign="right" color="red" onClick={this.delete}>
               Delete
           </Button>
         </Modal.Actions>

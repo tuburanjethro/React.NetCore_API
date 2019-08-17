@@ -1,16 +1,16 @@
-﻿import React from 'react';
+import React from 'react';
 import {
     Button, Modal, Form, Header, Icon
 } from 'semantic-ui-react';
 
-export default class EditModal extends React.Component {
+export default class EditCustomer extends React.Component {
 
     constructor(props){
       super(props);
       this.state = { 
         modalOpen: false,
         Name: this.props.name,
-        Address: this.props.address
+        Address: this.props.address,
       }
       
       this.handleClose = this.handleClose.bind(this);
@@ -34,7 +34,7 @@ export default class EditModal extends React.Component {
           open={this.state.modalOpen}
           onClose={this.handleClose}
         >
-          <Header content="Edit Customer" />
+          <Header content="Edit Customer"/>
           <Modal.Content>
             <Form>
                 <Form.Input
@@ -52,10 +52,10 @@ export default class EditModal extends React.Component {
             </Form>
           </Modal.Content>
           <Modal.Actions>
-            <Button onClick={this.handleClose}>
+            <Button color="black" onClick={this.handleClose}>
               Cancel
             </Button>
-            <Button textAlign="right" onClick={this.saveChanges}>
+            <Button color="green" onClick={this.saveChanges}>
                 Edit
             </Button>
           </Modal.Actions>
@@ -63,5 +63,3 @@ export default class EditModal extends React.Component {
       )
     }
 }
-
-// export default EditModal

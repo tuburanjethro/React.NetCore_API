@@ -1,10 +1,12 @@
+using DBPractice.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace OnboardingTaskOne
 {
@@ -26,6 +28,15 @@ namespace OnboardingTaskOne
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/build";
+            });
+
+            //var connection = @"Server=DESKTOP-TJQEIA7;Database=Onboarding;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<OnboardingContext>
+                (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            //Solve self referencing loop. Returned Json from SalesController was cut short.
+            services.AddMvc().AddJsonOptions(options => {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
         }
 
