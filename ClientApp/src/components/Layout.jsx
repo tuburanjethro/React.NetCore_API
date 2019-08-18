@@ -20,14 +20,12 @@ export class Layout extends React.Component {
   }
 
   handleItemClick = (e, { name }) =>{
-    console.log("Layout handleClick: "+this.state.activeItem+" => "+ name);
     this.setState({
       activeItem: name
     });
   }
 
   getComponent = () => {
-    console.log("Layout: getComponent");
     let component;
     switch (this.state.activeItem){
         case 'Customers' :
@@ -50,8 +48,6 @@ export class Layout extends React.Component {
   }
 
   render(){
-    console.log("Layout: Rendering...");
-
     const { activeItem } = this.state;
     
     return(
