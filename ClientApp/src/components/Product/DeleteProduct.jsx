@@ -21,7 +21,6 @@ export default class DeleteProduct extends React.Component {
     handleClose = () => this.setState({ modalOpen: false })
   
     delete = () => {
-        console.log(this.props.id);
         this.props.delete({Id: this.props.Id, Name: this.props.Name, Price: this.props.Price});
         this.handleClose();
     }

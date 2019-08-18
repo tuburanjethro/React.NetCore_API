@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Button, Modal, Header, Icon, Input, Dropdown
+    Button, Modal, Icon, Input, Dropdown
 } from 'semantic-ui-react';
 
 export default class EditSale extends React.Component {
@@ -20,6 +20,7 @@ export default class EditSale extends React.Component {
         this.handleOpen = this.handleOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.getData = this.getData.bind(this);
+        this.convert = this.convert.bind(this);
     }
 
     componentDidMount(){
@@ -30,17 +31,20 @@ export default class EditSale extends React.Component {
   
     handleClose = () => this.setState({ modalOpen: false })
 
+    convert = (date) => {
+        let arr = date.split("/");
+        return arr[1]+"/"+arr[0]+"/"+arr[2];
+    }
+
     handleSave = () => {
+        let date = this.convert(this.state.date);
         this.props.edit({
             Id: this.props.sale.id,
-            ProductId: this.state.product,
+            ProductId: this.state.product,  
             CustomerId: this.state.customer,
             StoreId: this.state.store,
-            DateSold: this.state.date
+            DateSold: date
         });
-
-        console.log(this.state) 
-
         this.handleClose();
     }
 

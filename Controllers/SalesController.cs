@@ -49,22 +49,23 @@ namespace OnboardingTaskOne.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSale(int id, Sale sale)
         {
-            DateTime date = Convert.ToDateTime(sale.DateSold);
-            var updatedSale = new Sale()
-            {
-                Id = sale.Id,
-                CustomerId = sale.CustomerId,
-                ProductId = sale.ProductId,
-                StoreId = sale.StoreId,
-                DateSold = date
-            };
 
-            if (id != updatedSale.ProductId)
+            if (id != sale.ProductId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(updatedSale).State = EntityState.Modified;
+            var date = Convert.ToDateTime(sale.DateSold);
+            Sale newSale = new Sale()
+            {
+                Id = sale.Id,
+                CustomerId = sale.CustomerId,
+                ProductId = sale.ProductId,
+                StoreId = sale.ProductId,
+                DateSold = date
+            };
+
+            _context.Entry(newSale).State = EntityState.Modified;
 
             try
             {

@@ -16,6 +16,7 @@ namespace DBPractice.Models
         [Display(Name = "Customer Name")]
         public string Name { get; set; }
 
+        [DataType(DataType.Currency)]
         [Required(ErrorMessage = "Please enter an price")]
         public decimal Price { get; set; }
 

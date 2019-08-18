@@ -28,7 +28,7 @@ export default class DeleteSale extends React.Component {
   render() {
     return (
       <Modal
-      trigger={<Button negative onClick={this.handleOpen}><Icon name="delete" />Delete Sale</Button>}
+      trigger={<Button negative onClick={this.handleOpen}><Icon name="delete" />Delete</Button>}
         open={this.state.modalOpen}
         onClose={this.handleClose}
       >

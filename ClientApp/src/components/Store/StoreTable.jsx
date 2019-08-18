@@ -26,7 +26,6 @@ export default class StoreTable extends React.Component {
 
     loadData = () => {
         let url = 'api/'+this.state.displayName
-        console.log(url);
         fetch(url)
         .then(response => response.json())
         .then(store => {
@@ -58,13 +57,11 @@ export default class StoreTable extends React.Component {
             },
             body: JSON.stringify(obj)
         }).then(this.loadData());
-        console.log("Edit");
         
     }
 
     delete = (obj) => {
         let url = "api/"+this.state.displayName+"/" + obj.Id;
-        console.log(obj.Id)
         fetch(url, {
             method: 'DELETE',
             headers: {
@@ -77,10 +74,7 @@ export default class StoreTable extends React.Component {
     render() {
         let storeList = this.state.storeList;
 
-        console.log("Rendering...");
-        console.log(this.state.storeList);
-
-        let tableData = null;
+        let tableData = <p><em>Loading...</em></p>;
 
         if (storeList !== "") {
             tableData = storeList.map(store => 

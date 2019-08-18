@@ -21,13 +21,11 @@ export default class ProductTable extends React.Component {
     }
 
     componentDidMount(){
-        console.log("Product: Mounted");
         this.loadData();
     }
 
     loadData = () => {
         let url = 'api/'+this.state.displayName
-        console.log(url);
         fetch(url)
         .then(response => response.json())
         .then(product => {
@@ -48,7 +46,6 @@ export default class ProductTable extends React.Component {
                 Price: obj.Price,
             })
         })
-        console.log("Create");
         this.loadData();
     }
 
@@ -60,8 +57,7 @@ export default class ProductTable extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(obj)
-        }).then(r => console.log(r));
-        console.log("Edit");
+        })
         this.loadData();
     }
 
@@ -73,18 +69,14 @@ export default class ProductTable extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(obj)
-        }).then(r => console.log(r));
-        console.log("Delete");
+        })
         this.loadData();
     }
 
     render() {
         let productList = this.state.productList;
 
-        console.log("Rendering...");
-        console.log(this.state.productList);
-
-        let tableData = null;
+        let tableData = <p><em>Loading...</em></p>;
 
         if (productList !== "") {
             tableData = productList.map(product => 

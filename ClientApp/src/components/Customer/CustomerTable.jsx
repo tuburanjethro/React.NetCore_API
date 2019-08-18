@@ -21,14 +21,11 @@ export default class CustomerTable extends React.Component {
     }
 
     componentDidMount() {
-        console.log("Customer Table: Mounted");
         this.loadData();
     }
 
     loadData = () => {
-        console.log("Loading data");
         let url = 'api/'+this.state.displayName
-        console.log(url);
         fetch(url)
         .then(response => response.json())
         .then(customer => {
@@ -60,13 +57,11 @@ export default class CustomerTable extends React.Component {
             },
             body: JSON.stringify(obj)
         }).then(this.loadData());
-        console.log("Edit");
         
     }
 
     delete = (obj) => {
         let url = "api/"+this.state.displayName+"/" + obj.Id;
-        console.log(obj.Id)
         fetch(url, {
             method: 'DELETE',
             headers: {
@@ -79,10 +74,7 @@ export default class CustomerTable extends React.Component {
     render() {
         let customerList = this.state.customerList;
 
-        console.log("Rendering...");
-        console.log(this.state.customerList);
-
-        let tableData = null;
+        let tableData = <p><em>Loading...</em></p>;
 
         if (customerList !== "") {
             tableData = customerList.map(customer => 

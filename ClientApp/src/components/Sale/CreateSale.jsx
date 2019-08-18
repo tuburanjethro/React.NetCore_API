@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Table, Form, Dropdown, Button, Input, Select, Modal, Label, Header
+    Dropdown, Button, Input, Modal
 } from 'semantic-ui-react';
 
 export default class CreateSale extends React.Component {
@@ -43,8 +43,6 @@ export default class CreateSale extends React.Component {
             StoreId: this.state.store,
             DateSold: date
         });
-
-        console.log(this.state.date)
 
         this.handleClose();
     }
@@ -101,7 +99,7 @@ export default class CreateSale extends React.Component {
                 Create Sale
             </Modal.Header>
             <Modal.Content>
-                Date Sold (MM/DD/YYYY)
+                Date Sold (DD/MM/YYYY)
                 <Input
                     fluid
                     onChange={(e) => this.setState({ date: e.target.value })}
@@ -143,68 +141,3 @@ export default class CreateSale extends React.Component {
         )
     }
 }
-
-/*
-<Modal.Content>
-    <Form>
-        <Form.Field
-            control={Select}
-            options={customers}
-            label="Customer"
-            search
-            searchInput={{ id: 'form-select-control-customer' }}
-            onChange={(e) => this.setState({customer: e.target.value})}
-        />
-        <Form.Field
-            control={Select}
-            options={products}
-            label="Product"
-            search
-            searchInput={{ id: 'form-select-control-product' }}
-            onChange={(e) => this.setState({product: e.target.value})}
-        />
-        <Form.Field
-            control={Select}
-            options={stores}
-            label="Store"
-            search
-            searchInput={{ id: 'form-select-control-store' }}
-            onChange={(e) => this.setState({store: e.target.value})}
-        />
-    </Form>
-</Modal.Content>
-*/
-
-/*
-<Modal.Content>
-    Customers
-    <Dropdown
-        fluid
-        search
-        selection
-        options={customers}
-        />
-    Products
-    <Dropdown
-        fluid
-        search
-        selection
-        options={products}
-        />
-    Stores
-    <Dropdown
-        fluid
-        search
-        selection
-        options={stores}
-        />
-</Modal.Content>
-<Modal.Actions>
-    <Button onClick={this.handleClose}>
-        Cancel
-    </Button>
-    <Button onClick={this.handleSave}>
-        Save
-    </Button>
-</Modal.Actions>
-*/

@@ -81,7 +81,7 @@ export default class SalesTable extends React.Component
     render(){
         let salesList = this.state.salesList;
 
-        let tableData = null;
+        let tableData = <p><em>Loading...</em></p>;
 
         if(salesList != ""){
             tableData = salesList.map(sale =>
@@ -116,7 +116,7 @@ export default class SalesTable extends React.Component
                             <Table.HeaderCell>Customer</Table.HeaderCell>
                             <Table.HeaderCell>Product</Table.HeaderCell>
                             <Table.HeaderCell>Store</Table.HeaderCell>
-                            <Table.HeaderCell>Date Sold (MM/DD/YYYY)</Table.HeaderCell>
+                            <Table.HeaderCell>Date Sold (DD/MM/YYYY)</Table.HeaderCell>
                             <Table.HeaderCell>Action</Table.HeaderCell>
                             <Table.HeaderCell>Action</Table.HeaderCell>
                         </Table.Row>
